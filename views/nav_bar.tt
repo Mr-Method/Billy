@@ -1,0 +1,48 @@
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/"> Billy Invoice</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li class="active"><a href="/">Home</a></li>
+              
+              <li class="dropdown" id="invoice">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#invoice">
+                    Invoice<b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="/invoice/list"> List Invoices </a></li>
+                    <li class="divider"></li>
+                    <li><a href="/invoice/new"> Create Invoice</a></li>  
+                </ul>
+              </li>
+              <li class="dropdown" id="clients">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#clients">
+                    Clients<b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="/clients/list">List Clients</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/clients/add">Create Client</a></li>
+                </ul>
+              </li>
+                            <li class="dropdown" id="config">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#config">
+                    Settings<b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="/config/company_info">Company Info</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/config/company_ship">Company Ship Info</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>

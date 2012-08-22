@@ -1,0 +1,3 @@
+<html>
+<p>Client : [% company_name %]  has been added to the clients list.</p>
+</html>

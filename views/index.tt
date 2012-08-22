@@ -1,0 +1,9 @@
+[% PROCESS header.tt %]
+
+<form>
+    <label>Username</label><input type="text" name="user" />
+    <label>Password</label><input type="password" name="password"/>
+    
+</form>
+
+[% PROCESS footer.tt %]

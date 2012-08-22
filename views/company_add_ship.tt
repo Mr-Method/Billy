@@ -1,0 +1,5 @@
+[% PROCESS header.tt %]
+
+Awesome you have added company shipment information.
+ 
+[% PROCESS footer.tt %]

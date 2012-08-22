@@ -1,0 +1,44 @@
+[% PROCESS header.tt %]
+
+
+
+<div id="client-list">
+
+<table class="table table-condensed table-bordered table-striped">
+   <caption>Client List</caption>
+
+   <thead>
+   <tr>
+        <th> Company Name </th>
+        <th> Website </th>
+        <th> Contact First Name </th>
+        <th> Contact Last Name </th>
+        <th> Address 1 </th>
+        <th> Address 2 </th>
+        <th> City </th>
+        <th> State </th>
+        <th> Zipcode </th>
+        <th> Phone </th>
+    </tr>
+   </thead>
+[% FOREACH key IN client_list.keys.sort %]
+    <tr> 
+        <td>[% client_list.$key.company_name %]</td>
+        <td>[% client_list.$key.website %]</td>
+        <td>[% client_list.$key.contact_fname %]</td>
+        <td>[% client_list.$key.contact_lname %]</td>
+        <td>[% client_list.$key.address_1 %]</td>
+        <td>[% client_list.$key.address_2 %]</td>
+        <td>[% client_list.$key.city %]</td>
+        <td>[% client_list.$key.state %]</td>
+        <td>[% client_list.$key.zipcode %]</td>
+        <td>[% client_list.$key.phone %]</td>
+    </tr>
+[% END %]
+
+</table>
+</div>
+
+
+
+[% PROCESS footer.tt %]

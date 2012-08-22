@@ -1,0 +1,47 @@
+[% PROCESS header.tt %]
+
+<script type="text/javascript" src="/js/invoice.js">
+</script>
+
+
+
+<table class="table table-condensed table-bordered table-striped invoice-list">
+	<caption> Invoice List</caption>
+[% IF invoice_list %]
+	<thead>
+	<tr>
+		<th>Actions</th>
+		<th>Invoice Number</th>
+		<th>Company Name</th>
+		<th>Contact Name</th>
+		<th>Invoice Status</th>
+		<th>Invoice Total</th>
+	</tr>
+	</thead>
+[% FOREACH key in invoice_list.keys.sort %]
+	<tr>
+	    <td style="background-color:white; width:200px;">
+		<ul class="action_menu">
+			<li class="edit">
+				<a href="/invoice/edit?invoice_id=[% invoice_list.$key.invoice_number %]">Edit</a>
+			</li>
+			<li class="delete">
+				<a href="/invoice/delete?invoice_id=[% invoice_list.$key.invoice_number %]">Delete</a>
+			</li>
+		</ul>
+	    </td>
+	    <td> [% invoice_list.$key.invoice_number %]</td>
+	    <td> [% invoice_list.$key.company_name %] </td>
+	    <td> [% invoice_list.$key.contact_fname %]  [% invoice_list.$key.contact_lname %] </td>
+    	    <td>  </td>
+	    <td>  </td>
+	</tr>
+[% END %]
+
+[% END %]
+	
+	
+</table>
+
+
+[% PROCESS footer.tt %]

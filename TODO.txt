@@ -1,0 +1,11 @@
+TODO LIST:
+
+- Format number with 2 decimals in invoice page.
+- Save Invoice information with ship_info/ company_info and total amount.
+- Create invoice status of Paid.
+- Create way to keep track of payments per invoice.
+- Create a page to edit Client information.
+- Create a page that will list invoices.
+- Create page to edit company_info and set 1 row to active.
+- Create page to edit company_ship_info and set 1 row to active.
+- Make login form work.

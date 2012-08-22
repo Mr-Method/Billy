@@ -1,0 +1,97 @@
+
+/*  This area is for Invoice Page */
+
+/*
+
+#invoice-num {
+	font-color:red;
+}
+
+#company-info {
+	font-color:blue;
+}
+
+*/
+
+#middle-invoice th{
+    font-size:9px;
+    color:white;
+    padding:5px;
+}
+
+.item {
+   background-color:#CCE6FF;
+}
+/*
+#bottom-invoice {
+    border: 1px solid black;
+    background-color:white;
+    padding:10px;
+
+}
+*/
+
+/*  This area is for Client Page */
+
+
+/*  This area is for Client Add Page */
+
+#client-add-form {
+    border: 1px solid black;
+    margin:20px;
+    padding: 5px;
+    width:600px;
+}
+
+#client-add-form label {
+    margin-top: .33em;
+    display:block;
+}
+#client-add-form input {
+    display:block;
+    width:250px;
+}
+#client-column-1 {
+    float:left;
+}
+#client-column-2 {
+    padding-left:300px;
+}
+
+/*  This area is for action_menu */
+
+.action_menu {
+    list-style-type:none;
+    padding:0px;
+    margin:0px;
+}
+
+.action_menu li {
+    display: inline-block;
+    border: solid 1px black;
+    height: 15px;
+    width: 50px;
+    margin: 5px;
+    padding: 5px;
+}
+
+.action_menu li a {
+    text-decoration:none;
+    color: black;    
+}
+.action_menu li:hover{
+    background-color: #F9F9F9;
+}
+.action_menu .edit {
+    background-image: url(/js/images/page_white_edit.png);
+    background-repeat: no-repeat;
+    background-position: 0px 5px;
+    padding-left:25px;
+}
+
+.action_menu .delete {
+    background-image: url(/js/images/page_white_delete.png);
+    background-repeat: no-repeat;
+    background-position: 0px 5px;
+    padding-left:25px; 
+}

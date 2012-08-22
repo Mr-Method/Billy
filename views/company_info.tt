@@ -1,0 +1,15 @@
+[% PROCESS header.tt %]
+
+<form method="post" action="/config/add_info">
+<label> Company Name </label><input name="company_name" type="text"/>
+<label> Address </label><input name="address" type="text"/>
+<label> Addres2 </label><input name="address2" type="text"/>
+<label> City </label><input name="city" type="text"/>
+<label> State </label><input name="state" type="text"/>
+<label> Zipcode </label><input name="zipcode" type="text"/>
+<label> Country </label><input name="country" type="text"/>
+<button> Submit </button>
+
+</form>
+
+[% PROCESS footer.tt %]
