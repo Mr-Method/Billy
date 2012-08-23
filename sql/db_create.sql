@@ -20,7 +20,7 @@ CREATE TABLE "invoice_items" (
     "price" INTEGER NOT NULL
 );
 CREATE TABLE "invoices" (
-    "invoice_number" INTEGER NOT NULL,
+    "invoice_number" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
     "client_id" INTEGER NOT NULL,
     "company_ship_id" INTEGER NOT NULL,
     "company_info_id" INTEGER NOT NULL

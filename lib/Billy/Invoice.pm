@@ -19,12 +19,16 @@ any ['get', 'post'] => '/new' => sub {
         my $sth = database->prepare($query);
         $sth->execute($client_id);
         my $client_info = $sth->fetchrow_hashref();
+
+	# TODO: Need to way to inform user about inactive company shipment information
 	
        	my $ship_query = "select * from company_ship where active = 1";
 	my $ship_sth = database->prepare($ship_query);
 	$ship_sth->execute;
 	my $ship_info =  $ship_sth->fetchrow_hashref();
 	
+	# TODO: Need to way to inform user about missing company  information
+
 	my $company_query = "select * from company_info where active = 1";
 	my $company_sth = database->prepare($company_query);
 	$company_sth->execute;

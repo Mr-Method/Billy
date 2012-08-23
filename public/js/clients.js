@@ -1,6 +1,5 @@
 $(document).ready( function() {
     $('.add_client').click( function(){
-         console.log($("#client-add-form form").serialize());
          $.ajax({
                 url: '/clients/create',
                 type: 'POST',

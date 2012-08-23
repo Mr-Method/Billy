@@ -35,11 +35,10 @@ any ['get', 'post'] => '/create' => sub {
     my $zip_code        =  params->{'zip_code'};
     my $website         =  params->{'website'};
     my $params = params(); 
-    print Dumper($params) . "\n\n"; 
     # use qq to put sql in double quote 
     my $sth = database->prepare(qq{ INSERT INTO clients (company_name,address_1,address_2,city,state,phone,website,zip_code,contact_fname, contact_lname) VALUES ( ?,?,?,?,?,?,?,?,?,?)} );
     $sth->execute($company_name, $address_1, $address_2, $city, $state, $phone, $website, $zip_code,$contact_fname,$contact_lname);
-      template "create_sucess.tt" , { company_name =>  $company_name };
+      template "create_success.tt" , { company_name =>  $company_name };
 };
 
 any ['get', 'post'] => '/edit' => sub {

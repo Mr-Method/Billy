@@ -31,7 +31,7 @@
         <td>[% client_list.$key.address_2 %]</td>
         <td>[% client_list.$key.city %]</td>
         <td>[% client_list.$key.state %]</td>
-        <td>[% client_list.$key.zipcode %]</td>
+        <td>[% client_list.$key.zip_code %]</td>
         <td>[% client_list.$key.phone %]</td>
     </tr>
 [% END %]
