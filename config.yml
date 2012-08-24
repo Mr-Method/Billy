@@ -34,22 +34,4 @@ plugins:
         database: "/home/cgonzalez/project/Billy/sql/billy_invoice_test.sqlite"
 
 
-#  I think its a better idea to store company info in app config then store it per invoice
-# Company Information Setting
-Company_information:
-	company_name: "Test1"
-	address: "123 Devoe St"
-	city: "New York"
-	state: "New York"
-	zipcode: "100019"
-	country: "USA"
-
-# Company Shipment Setting:
-Company_shipment_setting:
-	company_name: "Test1"
-	address: "PO BOX Address"
-	city: "New York"
-	state: "New York"
-	zipcode: "10015"
-	country: "USA"	
 	
