@@ -20,10 +20,12 @@ any ['get', 'post'] => '/company_info' => sub {
 any ['get','post'] => '/add_info' => sub {
         # take params and store data in company_ship table
         my $modify_date = localtime();
-        my @sql_args = (
+        my @sql_args = ( 
             params->{company_name},
             params->{address},
             params->{address2},
+            params->{phone},
+            params->{fax},
             params->{city},
             params->{state},
             params->{zipcode},
@@ -33,13 +35,9 @@ any ['get','post'] => '/add_info' => sub {
         );
         
         print STDERR Dumper(\@sql_args);
-        
-        my $query =
-        "INSERT INTO company_info
-        (company_name,address,address2,city,state,zipcode,country,active,modify_date)
-         VALUES (?,?,?,?,?,?,?,?,?)
-        ";
+        my $query = qq{ INSERT INTO company_info (company_name,address,address2,phone,fax,city,state,zipcode,country,active,modify_date) VALUES (?,?,?,?,?,?,?,?,?,?,?) };
         my $sth = database->prepare($query);
+
         $sth->execute(@sql_args);
         template 'company_add_info.tt';
 };
@@ -59,7 +57,7 @@ any ['get','post'] => '/company_ship' => sub{
 any ['get','post'] => '/add_ship' => sub{
     # take params and store data in company_ship table
         my $modify_date = localtime();
-        my @sql_args = (
+        my @sql_args = ( 
             params->{company_name},
             params->{contact_name},
             params->{address},

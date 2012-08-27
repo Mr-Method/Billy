@@ -27,7 +27,7 @@ CREATE TABLE "invoices" (
 );
 CREATE TABLE "company_info" (
     "company_info_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    "name" TEXT NOT NULL,
+    "company_name" TEXT NOT NULL,
     "address" TEXT NOT NULL,
     "address2" TEXT,
     "city" TEXT NOT NULL,
@@ -37,14 +37,14 @@ CREATE TABLE "company_info" (
     "fax" TEXT,
     "country" TEXT NOT NULL,
     "active" INTEGER,
-    "modify_date" TEXT
+    "modify_date" TEXT NOT NULL
 );
 CREATE TABLE "company_ship" (
     "company_ship_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
     "company_name" TEXT NOT NULL,
     "contact_name" TEXT NOT NULL,
     "address" TEXT NOT NULL,
-    "address2" TEXT NOT NULL,
+    "address2" TEXT ,
     "city" TEXT NOT NULL,
     "state" TEXT NOT NULL,
     "zipcode" TEXT NOT NULL,

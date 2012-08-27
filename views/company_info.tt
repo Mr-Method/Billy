@@ -4,10 +4,19 @@
 <label> Company Name </label><input name="company_name" type="text"/>
 <label> Address </label><input name="address" type="text"/>
 <label> Addres2 </label><input name="address2" type="text"/>
+<label> Phone Number </label><input name="phone" type="text"/>
+<label> Fax Number </label><input name="fax" type="text"/>
 <label> City </label><input name="city" type="text"/>
 <label> State </label><input name="state" type="text"/>
 <label> Zipcode </label><input name="zipcode" type="text"/>
 <label> Country </label><input name="country" type="text"/>
+<label> Make this active Company Information?</label> 
+<select name="active">
+	<option value="1"> Yes </option>
+	<option value="0"> No </option>
+</select>
+<br />
+
 <button> Submit </button>
 
 </form>
