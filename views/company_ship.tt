@@ -9,8 +9,7 @@
 <label> State </label><input name="state" type="text"/>
 <label> Zipcode </label><input name="zipcode" type="text"/>
 <label> Country </label><input name="country" type="text"/>
-<label> Make this default? </label>
-
+<label> Make this active company shipment information? </label>
 <select name="active">
         <option value="1"> Yes </option>
         <option value="0"> No </option>
