@@ -42,7 +42,6 @@ any ['get','post'] => '/add_info' => sub {
 				$ua_sth->execute();
 		};
 		
-        print STDERR Dumper(\@sql_args);
         my $query = qq{ INSERT INTO company_info (company_name,address,address2,phone,fax,city,state,zipcode,country,active,modify_date) VALUES (?,?,?,?,?,?,?,?,?,?,?) };
         my $sth = database->prepare($query);
 
@@ -82,7 +81,6 @@ any ['get','post'] => '/add_ship' => sub{
             $modify_date
         );
         
-        print STDERR Dumper(\@sql_args);
          if ( $active == 1) {
 				# write some sql to update all active company_ship records.
 				my $update_active_query = qq{ update company_ship set active = 0 where active = 1; };
