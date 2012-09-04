@@ -22,11 +22,11 @@
 	<tr>
 	    <td style="background-color:white; width:200px;">
 		<ul class="action_menu">
-			<li class="edit">
-				<a href="/invoice/edit?invoice_id=[% invoice_list.$key.invoice_number %]">Edit</a>
+			<li>
+				<a class="btn" href="/invoice/edit?invoice_id=[% invoice_list.$key.invoice_number %]"> <i class="icon-edit"></i>Edit</a>
 			</li>
-			<li class="delete">
-				<a href="/invoice/delete?invoice_id=[% invoice_list.$key.invoice_number %]">Delete</a>
+			<li>
+				<a class="btn" href="/invoice/delete?invoice_id=[% invoice_list.$key.invoice_number %]"> <i class="icon-trash"></i>Delete</a>
 			</li>
 		</ul>
 	    </td>

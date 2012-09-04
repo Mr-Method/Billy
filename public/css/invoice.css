@@ -68,9 +68,7 @@
 
 .action_menu li {
     display: inline-block;
-    border: solid 1px black;
     height: 15px;
-    width: 50px;
     margin: 5px;
     padding: 5px;
 }
@@ -78,20 +76,4 @@
 .action_menu li a {
     text-decoration:none;
     color: black;    
-}
-.action_menu li:hover{
-    background-color: #F9F9F9;
-}
-.action_menu .edit {
-    background-image: url(/js/images/page_white_edit.png);
-    background-repeat: no-repeat;
-    background-position: 0px 5px;
-    padding-left:25px;
-}
-
-.action_menu .delete {
-    background-image: url(/js/images/page_white_delete.png);
-    background-repeat: no-repeat;
-    background-position: 0px 5px;
-    padding-left:25px; 
 }
