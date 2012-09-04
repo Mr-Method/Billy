@@ -1,0 +1,30 @@
+Billy is a billing system built with Perl MVC Dancer + Bootstrap + FontAwesome
+
+The goal of this project is to show my proficiency in SQL, Jquery , HTML & CSS and to have fun while doing it. 
+
+
+**** Please note that this application is not production ready. ****
+
+To run this application on your local machine you can execute the app.pl script under bin directory.
+
+./bin/app.pl   
+
+Example of execution:
+
+cgonzalez@cgonzalez-1015PE:~/project/Billy/bin$ ./app.pl 
+[8605]  core @0.000037> loading Dancer::Handler::Standalone handler in /usr/share/perl5/Dancer/Handler.pm l. 46
+[8605]  core @0.000920> loading handler 'Dancer::Handler::Standalone' in /usr/share/perl5/Dancer.pm l. 461
+>> Dancer 1.3091 server 8605 listening on http://0.0.0.0:3000
+>> Dancer::Plugin::Ajax (1.00)
+>> Dancer::Plugin::Database (1.51)
+>> Dancer::Plugin::Database::Handle (0.07)
+== Entering the development dance floor ...
+
+
+For more instructions on deploying this app you can read the Dancer::Deployment Pod documentation ( https://metacpan.org/module/Dancer::Deployment ).
+
+
+
+Further Notes:
+
+At some point when this project is more mature I will rewrite it to use an ORM and Dancer2 ( https://github.com/PerlDancer/Dancer2 ). 

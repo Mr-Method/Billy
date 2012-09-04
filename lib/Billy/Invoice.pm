@@ -124,4 +124,23 @@ any ['get'] => '/edit' => sub {
     template 'invoice_edit.tt' , { invoice_items => $invoice_items, ship_info => $ship_info, company_info => $comp_info };
 };
 
+any ['get'] => '/delete' => sub { 
+    my $invoice_id = params->{invoice_id};
+    my $delete_param = params->{delete} || 0;
+    
+    if ( $delete_param == 0 ) { 
+	# render a page that will display invoice information and request to confirm deletion 
+
+    } elsif ( $delete_param == 1 ) {
+        # delete the invoice completely 
+	
+	$delete_sql = "Delete a.*, b* from invoices a left join invoice_items b on a.invoice_id = b.invoice_number  where a.invoice_id = ?";
+	my $sth_delete = database->prepare($delete_sql);
+	$sth_delete->execute($invoice_id);
+        template 'invoice_deleted.tt' , { invoice_id => $invoice_id };	
+    }
+		
+};
+
+
 true;
