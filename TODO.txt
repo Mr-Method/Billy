@@ -5,5 +5,4 @@ TODO LIST:
 - Create invoice status of Paid.
 - Create way to keep track of payments per invoice.
 - Create a page to edit Client information.
-- Create a page that will list invoices.
 - Make login form work.

@@ -9,6 +9,7 @@
 
    <thead>
    <tr>
+        <th> Action Menu </th>
         <th> Company Name </th>
         <th> Website </th>
         <th> Contact First Name </th>
@@ -23,6 +24,13 @@
    </thead>
 [% FOREACH key IN client_list.keys.sort %]
     <tr> 
+        <td>
+		<ul class="action_menu">
+			<li> <a class="btn" href="/clients/edit?client_id=[% client_list.$key.id %]"> <i class="icon-edit"></i> Edit</a></li>
+			<li> <a class="btn" href="/clients/delete?client_id=[% client_list.$key.id %]"> <i class="icon-trash"></i> Delete</a></li>
+		</ul>
+
+	</td>
         <td>[% client_list.$key.company_name %]</td>
         <td>[% client_list.$key.website %]</td>
         <td>[% client_list.$key.contact_fname %]</td>
