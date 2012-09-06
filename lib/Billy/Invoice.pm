@@ -134,9 +134,8 @@ any ['get'] => '/delete' => sub {
     } elsif ( $delete_param == 1 ) {
         # delete the invoice completely. Gotta fix this query 
 	
-	my $delete_sql = "Delete a.*, b* from invoices a left join invoice_items b on a.invoice_id = b.invoice_number  where a.invoice_id = ?";
-	my $sth_delete = database->prepare($delete_sql);
-	$sth_delete->execute($invoice_id);
+	my $delete_sql = "Delete a.*, b* from invoices a left join invoice_items b on a.invoice_id = b.invoice_number  where a.invoice_id = $invoice_id";
+	my $sth_delete = database->do($delete_sql);
         template 'invoice_deleted.tt' , { invoice_id => $invoice_id };	
     }
 		

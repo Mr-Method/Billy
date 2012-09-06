@@ -50,9 +50,21 @@ any ['get', 'post'] => '/edit' => sub {
     
 };
 
-#any ['get', 'post'] => '/edit' => sub {
-
-#};
+any ['get', 'post'] => '/delete' => sub {
+    my $client_id = params->{client_id};
+    my $delete_param = params->{delete} || 0;
+    if ( $delete_param == 1 ) { 
+      print STDERR " params " . Dumper(params());
+      my $delete_query = "delete from clients where id = $client_id";
+      my $delete_sth = database->do($delete_query); 
+      template 'client_delete.tt', {client_id => $client_id};
+    } else { 
+      my $client_sql = "select * from clients where id = ?";
+      my $sth_client_info =  database->prepare($client_sql);
+      $sth_client_info->execute($client_id);
+      template 'confirm_client_delete.tt', { client_info => $sth_client_info->fetchrow_hashref() };  
+   }
+};
 
 
 true;

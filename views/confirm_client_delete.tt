@@ -1,0 +1,43 @@
+[% PROCESS header.tt %]
+
+<script type="text/javascript" src="/js/clients.js">
+</script>
+
+<div id="client-edit-form">
+<div id="client-column-1">
+<fieldset>
+<legend>Client Contact Info</legend>
+<label> Company Name: </label> <b>[% client_info.company_name %]</b> <br />
+<label> Website: </label> <b>[% client_info.website %]</b> <br />
+<label> Contact First Name: </label> <b>[% client_info.contact_fname %]</b> <br />
+<label> Contact Last Name: </label> <b>[% client_info.contact_lname %]</b> <br />
+<label> Phone: </label> <b>[% client_info.phone %]</b> <br />
+</fieldset>
+</div>
+
+<div id="client-column-2">
+<fieldset>
+<legend> Client Address</legend>
+<label> Address 1: </label> <b>[% client_info.address_1 %]</b> <br />
+<label> Address 2: </label> <b>[% client_info.address_2 %]</b> <br />
+<label> City: </label> <b>[% client_info.city %]</b> <br />
+<label> State: </label> <b>[% client_info.state %]</b> <br />
+<label> Zipcode: </label> <b>[% client_info.zip_code %]</b> <br />
+</fieldset>
+</div>
+
+
+
+<form>
+<input type ="hidden" value="[% client_info.id %]" name="client_id" />
+<label>  Are you sure you want to delete this Client? </label>
+<select name="delete">
+	<option value="1">Yes</option>
+	<option value="0">No</option>
+</select>
+
+<input type="submit" value"submit" />	
+</form>
+</div>
+
+[% PROCESS footer.tt %]
