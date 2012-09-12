@@ -50,6 +50,20 @@ any ['get', 'post'] => '/edit' => sub {
     
 };
 
+any ['get', 'post'] => '/update' => sub {
+    #TODO: Fetch current values and then compare with passed parameters.
+    # once you know which values are different construct your sql update statement
+    # with the updated params.
+     
+    my $update_params = params();
+    
+    my $query = "update client set ";
+    my $sth = database->prepare($query);
+    $sth->execute(params->{client_id});
+    
+    template 'client_update_sucess.tt', { client_info =>};
+    
+};
 any ['get', 'post'] => '/delete' => sub {
     my $client_id = params->{client_id};
     my $delete_param = params->{delete} || 0;

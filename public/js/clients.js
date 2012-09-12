@@ -14,6 +14,22 @@ $(document).ready( function() {
                 }
          });
     });
+    
+    $('.update_client').click( function(){
+         $.ajax({
+                url: '/clients/update',
+                type: 'POST',
+                data:$("#client-edit-form form").serialize(),
+                dataType: "html",
+                success: function(message) {
+                            alert(message);
+                            ClearForm();
+                },
+                error: function(){
+                        alert( 'An error occured');
+                }
+         });
+    });
 });
 
 function ClearForm() {
