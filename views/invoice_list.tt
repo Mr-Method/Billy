@@ -23,10 +23,10 @@
 	    <td style="background-color:white; width:200px;">
 		<ul class="action_menu">
 			<li>
-				<a class="btn" href="/invoice/edit?invoice_id=[% invoice_list.$key.invoice_number %]"> <i class="icon-edit"></i>Edit</a>
+				<a class="btn" href="/invoice/edit?invoice_id=[% invoice_list.$key.invoice_number %]" rel="tooltip" data-placement="bottom" title="Edit Invoice"> <i class="icon-edit"></i></a>
 			</li>
 			<li>
-				<a class="btn" href="/invoice/delete?invoice_id=[% invoice_list.$key.invoice_number %]"> <i class="icon-trash"></i>Delete</a>
+				<a class="btn" href="/invoice/delete?invoice_id=[% invoice_list.$key.invoice_number %]" rel="tooltip" data-placement="bottom" title="Delete Invoice"> <i class="icon-trash"></i></a>
 			</li>
 		</ul>
 	    </td>

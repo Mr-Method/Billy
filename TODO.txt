@@ -6,3 +6,4 @@ TODO LIST:
 - Create way to keep track of payments per invoice.
 - Create a page to edit Client information.
 - Make login form work.
+- Add a section for company_info settings page where users can view current list of company information  and the default company info that is set.
