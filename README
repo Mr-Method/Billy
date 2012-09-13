@@ -5,11 +5,13 @@ The goal of this project is to show my proficiency in SQL, Jquery , HTML & CSS a
 
 **** Please note that this application is not production ready. ****
 
-To run this application on your local machine you can execute the app.pl script under bin directory.
+To run this application on your local machine you will need to install the following packages:
 
-./bin/app.pl   
+On Ubuntu OS: 
+sudo apt-get install libdancer-perl libdancer-plugin-database-perl libtemplate-perl sqlite3 libdbd-sqlite3-perl
 
-Example of execution:
+
+To start you application execute the app.pl script under bin directory.
 
 cgonzalez@cgonzalez-1015PE:~/project/Billy/bin$ ./app.pl 
 [8605]  core @0.000037> loading Dancer::Handler::Standalone handler in /usr/share/perl5/Dancer/Handler.pm l. 46
@@ -25,6 +27,17 @@ For more instructions on deploying this app you can read the Dancer::Deployment 
 
 
 
-Further Notes:
+*** TODO:
 
-At some point when this project is more mature I will rewrite it to use an ORM and Dancer2 ( https://github.com/PerlDancer/Dancer2 ). 
+- At some point when this project is more mature I will rewrite it to use an ORM and Dancer2 ( https://github.com/PerlDancer/Dancer2 ). 
+- Add Windows OS support by using FILE::* modules 
+- Format number with 2 decimals in invoice page.
+- Save Invoice information with ship_info/ company_info and total amount.
+- Create invoice status of Paid.
+- Create way to keep track of payments per invoice.
+- Create a page to edit Client information.
+- Make login form work.
+- Add a section for company_info settings page where users can view current list of company information  and the default company info that is set.
+- update the make script to include all modules needed to run Billy.
+- update Readme to include make script install instruction.
+

@@ -1,9 +1,0 @@
-TODO LIST:
-
-- Format number with 2 decimals in invoice page.
-- Save Invoice information with ship_info/ company_info and total amount.
-- Create invoice status of Paid.
-- Create way to keep track of payments per invoice.
-- Create a page to edit Client information.
-- Make login form work.
-- Add a section for company_info settings page where users can view current list of company information  and the default company info that is set.
