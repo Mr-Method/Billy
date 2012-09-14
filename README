@@ -31,7 +31,7 @@ For more instructions on deploying this app you can read the Dancer::Deployment 
 
 - At some point when this project is more mature I will rewrite it to use an ORM and Dancer2 ( https://github.com/PerlDancer/Dancer2 ). 
 - Add Windows OS support by using FILE::* modules 
-- Format number with 2 decimals in invoice page.
+- Input formatting for prices in invoice page
 - Save Invoice information with ship_info/ company_info and total amount.
 - Create invoice status of Paid.
 - Create way to keep track of payments per invoice.
