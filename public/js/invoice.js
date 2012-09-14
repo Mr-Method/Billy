@@ -61,7 +61,7 @@ function add_events() {
             console.log("Nothing is calculated");
 	} else if ($item_quantity >= 1 ) {
             $total_amount = $item_price * $item_quantity;
-            $(this).parents('.item').find('#item_total').val($total_amount);
+            $(this).parents('.item').find('#item_total').val($total_amount.toFixed(2));
             invoice_total();
 	};
         
@@ -76,6 +76,6 @@ function invoice_total(){
             $invoice += parseFloat(this.value);  
         }
     });
-    $('#invoice_total').val($invoice);
+    $('#invoice_total').val($invoice.toFixed(2));
     $invoice = 0;
 }
