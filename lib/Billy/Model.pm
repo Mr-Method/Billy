@@ -1,0 +1,3 @@
+package Billy::Modal;
+
+true;

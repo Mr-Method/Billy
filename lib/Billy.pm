@@ -1,8 +1,8 @@
 package Billy;
 use Dancer ':syntax';
-use Billy::Clients;
-use Billy::Invoice;
-use Billy::Config;
+use Billy::Handler::Clients;
+use Billy::Handler::Invoice;
+use Billy::Handler::Config;
 
 our $VERSION = '0.1';
 

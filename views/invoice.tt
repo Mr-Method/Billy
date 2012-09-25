@@ -1,7 +1,7 @@
 [% PROCESS header.tt %]
 
-<script type="text/javascript" src="/js/invoice.js">
-</script>
+<script type="txt/javascript" src="/js/jquery.formatCurrency-1.4.0.js" ></script>
+<script type="text/javascript" src="/js/invoice.js"></script>
 
 [% IF client_list %]
 	<div id="menu">
@@ -121,6 +121,7 @@ Invoice Disclaimer text goes here.
 </div>
 
 </div> <!-- end of invoice div -->
+
 [% END %]
 
 [% PROCESS footer.tt %]

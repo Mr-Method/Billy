@@ -1,7 +1,9 @@
-package Billy::Config;
+package Billy::Handler::Config;
 use Dancer ':syntax';
 use Dancer::Plugin::Database;
 use Dancer::Plugin::Ajax;
+use Billy::Model::Settings;
+
 use Data::Dumper;
 
 our $VERSION = '0.1';
@@ -12,8 +14,9 @@ prefix '/config';
 any ['get', 'post'] => '/company_info' => sub { 
     
     # display form to update company_info table
+    my $company_info = Billy::Model::Settings->new();
+    template 'company_info.tt', { company_info => $company_info->active_company_info };
     
-    template 'company_info.tt';
     
 };
 
@@ -55,12 +58,8 @@ any ['get','post'] => '/add_info' => sub {
 # code blocks for company shipment information
 
 any ['get','post'] => '/company_ship' => sub{
-    # display form to update/edit company_ship table
-        my $query = "select * from company_ship where active = '1'";
-        my $sth = database->prepare($query);
-        $sth->execute();
-        
-        template 'company_ship.tt', { company_ship => $sth->fetchrow_hashref() };
+        my $company_ship_info = Billy::Model::Settings->new();
+        template 'company_ship.tt', { company_ship => $company_ship_info->active_company_ship_info };
 };
 
 any ['get','post'] => '/add_ship' => sub{
@@ -82,10 +81,8 @@ any ['get','post'] => '/add_ship' => sub{
         );
         
          if ( $active == 1) {
-				# write some sql to update all active company_ship records.
-				my $update_active_query = qq{ update company_ship set active = 0 where active = 1; };
-				my $ua_sth = database->prepare($update_active_query);
-				$ua_sth->execute();
+              Billy::Model::Settings->clear_active_company_ship_info;
+
 		};
         my $query =
         "INSERT INTO company_ship

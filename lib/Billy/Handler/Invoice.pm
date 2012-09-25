@@ -1,4 +1,4 @@
-package Billy::Invoice;
+package Billy::Handler::Invoice;
 use Dancer ':syntax';
 use Dancer::Plugin::Database;
 use Dancer::Plugin::Ajax;

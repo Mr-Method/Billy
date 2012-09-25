@@ -1,4 +1,4 @@
-package Billy::Clients;
+package Billy::Handler::Clients;
 use Dancer ':syntax';
 use Dancer::Plugin::Database;
 use Dancer::Plugin::Ajax;
