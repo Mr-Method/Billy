@@ -4,6 +4,7 @@ use Dancer::Plugin::Database;
 use Dancer::Plugin::Ajax;
 use Data::Dumper;
 
+use Billy::Model::Invoice;
 our $VERSION = '0.1';
 
 prefix '/invoice';
@@ -35,15 +36,10 @@ any ['get', 'post'] => '/new' => sub {
 	    $company_sth->execute;
 	    my $company_info = $company_sth->fetchrow_hashref();
 	
-	### Create an invoice record and return the invoice number ###
-		    
-	    my $invoice_sql = "INSERT INTO invoices (client_id,company_info_id,company_ship_id) VALUES (?,?,?)";
-	    my $invoice_dbh= database();
-	    my $invoice_sth= $invoice_dbh->prepare($invoice_sql);
-	    $invoice_sth->execute($client_id,$company_info->{company_info_id}, $ship_info->{company_ship_id});
-        my $invoice_id =  $invoice_dbh->last_insert_id("","","invoices","id");
-	    
-	    
+        my $invoice = Billy::Model::Invoice->new($client_id, $company_info->{company_info_id}, $ship_info->{company_ship_id});
+
+	my $invoice_id = $invoice->invoice_number;
+ 
         template 'invoice.tt' , {
 		    client_info 	=> 	$client_info,
 		    ship_info		=>	$ship_info,
