@@ -5,6 +5,8 @@ use Dancer::Plugin::Ajax;
 use Data::Dumper;
 
 use Billy::Model::Invoice;
+use Billy::Model::Clients;
+
 our $VERSION = '0.1';
 
 prefix '/invoice';
@@ -15,27 +17,14 @@ any ['get', 'post'] => '/new' => sub {
     # IF client_id is passed then we render invoice page.
     
     if (params->{client_id}){
-	    my  $client_id = params->{client_id};
+        my  $client_id = params->{client_id};
 	
-        my $query = "select * from clients where id = ?";
-        my $sth = database->prepare($query);
-        $sth->execute($client_id);
-        my $client_info = $sth->fetchrow_hashref();
+        my $client_info = Billy::Model::Clients->new($client_id);
 
 	# TODO: Need a way to inform user about inactive company shipment information
-	
-       	my $ship_query = "select * from company_ship where active = 1";
-	    my $ship_sth = database->prepare($ship_query);
-	    $ship_sth->execute;
-	    my $ship_info =  $ship_sth->fetchrow_hashref();
-	
 	# TODO: Need a way to inform user about missing company  information
-
-	    my $company_query = "select * from company_info where active = 1";
-	    my $company_sth = database->prepare($company_query);
-	    $company_sth->execute;
-	    my $company_info = $company_sth->fetchrow_hashref();
-	
+	my $ship_info = Billy::Model::Settings->active_company_ship_info;	
+	my $company_info = Billy::Model::Settings->active_company_info;	
         my $invoice = Billy::Model::Invoice->new($client_id, $company_info->{company_info_id}, $ship_info->{company_ship_id});
 
 	my $invoice_id = $invoice->invoice_number;
@@ -48,10 +37,7 @@ any ['get', 'post'] => '/new' => sub {
 		    };
         
     } else {
-        my $query = "SELECT * from clients";
-	    my $sth = database->prepare($query);
-        $sth->execute;
-    	my $client_list = $sth->fetchall_hashref('id');
+    	my $client_list = Billy::Model::Clients->fetchall;
 	
 
         template 'invoice.tt', {
