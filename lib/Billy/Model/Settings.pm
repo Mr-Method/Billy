@@ -31,6 +31,30 @@ sub active_company_info {
     return $self->{active_company_info};
 };
 
+sub invoice_company_info {
+    my $self = shift;
+    my $invoice_id = shift;
+    
+    my $query = "select * from  company_info where company_info.company_info_id = ( select company_info_id  from invoices where invoice_number= ? )";
+    my $sth_comp_info = database->prepare($query);
+    $sth_comp_info->execute($invoice_id);
+    $self->{invoice_comp_info} = $sth_comp_info->fetchrow_hashref();
+    return $self->{invoice_comp_info};
+
+};
+
+sub invoice_ship_info {
+    my $self = shift;
+    my $invoice_id = shift;
+    
+    my $query = "select * from company_ship where company_ship.company_ship_id = ( select company_ship_id from invoices where invoice_number = ? )";
+    my $sth_ship_info = database->prepare($query);
+    $sth_ship_info->execute($invoice_id);
+    $self->{invoice_ship_info} = $sth_ship_info->fetchrow_hashref();
+    return $self->{invoice_ship_info};
+
+};
+
 sub clear_active_company_ship_info {
     my $self = shift;
     

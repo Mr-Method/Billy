@@ -1,3 +1,3 @@
-package Billy::Modal;
+package Billy::Model;
 
 true;

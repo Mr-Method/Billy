@@ -30,5 +30,16 @@ sub fetchall {
   return $sth->fetchall_hashref('id');
 };
 
+sub invoice_client {
+  my $self = shift;
+  my $invoice_num = shift;
+  my $query = "SELECT * from clients where id = (select client_id from invoices where invoice_number = ?)";
+  my $sth = database->prepare($query);
+  $sth->execute($invoice_num);
+    
+  return $sth->fetchrow_hashref();
+
+};
+
 1;
 
