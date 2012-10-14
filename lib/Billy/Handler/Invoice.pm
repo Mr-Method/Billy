@@ -80,7 +80,7 @@ ajax '/create' => sub {
 		 
 		 $sth_inv->execute($invoice_id,$description,$order,$quantity,$price);
 	};
-    
+   return "Invoice#  $invoice_id  has been saved";
 };
 
 any ['get'] => '/edit' => sub {
