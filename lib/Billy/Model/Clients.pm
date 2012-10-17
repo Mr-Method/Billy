@@ -41,5 +41,34 @@ sub invoice_client {
 
 };
 
+sub check_required_fields {
+  my $self = shift;
+  my $fields = shift;
+  
+  foreach $key keys( $fields ) {	
+	
+	# only field that is optional is address2
+	if ( $fields{$key} != '' || $key == "address2") {
+	   next;
+    } else {
+	  return "$fields{$key} is empty\n";	
+	}
+    return 1;
+  }
+};
+
+sub save_client {
+  my $self = shift; 
+  my $fields = params();
+  
+  # check required fields.
+  my $field_check = check_required_fields($params);
+  die $field_check unless $field_check == 1;	
+  
+  # write sql update 
+  
+	
+}
+
 1;
 

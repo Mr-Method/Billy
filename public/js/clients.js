@@ -15,6 +15,22 @@ $(document).ready( function() {
          });
     });
     
+    $('.save_client').click( function(){
+         $.ajax({
+                url: '/clients/save',
+                type: 'POST',
+                data:$("#client-edit-form form").serialize(),
+                dataType: "html",
+                success: function(message) {
+                            alert(message);
+                            ClearForm();
+                },
+                error: function(){
+                        alert( 'An error occured');
+                }
+         });
+    });
+    
     $('.update_client').click( function(){
          $.ajax({
                 url: '/clients/update',
