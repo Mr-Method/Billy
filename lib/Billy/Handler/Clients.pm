@@ -25,9 +25,7 @@ any ['get', 'post'] => '/add' => sub{
 
 any ['get', 'post'] => '/save' => sub {
 	my $params = params();
-    # check required fields.
-    my $field_check = Billy::Model::Clients->check_required_fields($params);
-    die $field_check unless $field_check == 1;
+
     # update client row.
     
     # return confirmation message.	
