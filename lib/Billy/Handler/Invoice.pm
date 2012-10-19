@@ -19,22 +19,26 @@ any ['get', 'post'] => '/new' => sub {
     if (params->{client_id}){
         my  $client_id = params->{client_id};
 	
-        my $client_info = Billy::Model::Clients->new($client_id);
+        my $client_info = Billy::Model::Clients->new( {id =>$client_id});
 
-	# TODO: Need a way to inform user about inactive company shipment information
-	# TODO: Need a way to inform user about missing company  information
-	my $ship_info = Billy::Model::Settings->active_company_ship_info;	
-	my $company_info = Billy::Model::Settings->active_company_info;	
-        my $invoice = Billy::Model::Invoice->new($client_id, $company_info->{company_info_id}, $ship_info->{company_ship_id});
-
-	my $invoice_id = $invoice->invoice_number;
+    	# TODO: Need a way to inform user about inactive company shipment information
+    	# TODO: Need a way to inform user about missing company  information
+    	my $ship_info = Billy::Model::Settings->active_company_ship_info;	
+    	my $company_info = Billy::Model::Settings->active_company_info;	
+        my $invoice = Billy::Model::Invoice->new({
+            client_id => $client_id,
+            company_info_id => $company_info->{company_info_id},
+            company_ship_id => $ship_info->{company_ship_id}
+        });
+    
+    	my $invoice_id = $invoice->invoice_number;
  
         template 'invoice.tt' , {
 		    client_info 	=> 	$client_info,
 		    ship_info		=>	$ship_info,
 		    company_info	=>	$company_info,
 		    invoice_id		=>	$invoice_id
-		    };
+		};
         
     } else {
     	my $client_list = Billy::Model::Clients->fetchall;
