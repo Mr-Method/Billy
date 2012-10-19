@@ -33,30 +33,26 @@ any ['get', 'post'] => '/save' => sub {
 };
 
 
-any ['get', 'post'] => '/create' => sub {
-    my $company_name    =  params->{'company_name'};
-    my $contact_fname   =  params->{'contact_fname'};
-    my $contact_lname   =  params->{'contact_lname'};
-    my $address_1       =  params->{'address_1'};
-    my $address_2       =  params->{'address_2'};
-    my $city            =  params->{'city'};
-    my $state           =  params->{'state'};
-    my $phone           =  params->{'phone'};
-    my $zip_code        =  params->{'zip_code'};
-    my $website         =  params->{'website'};
-    my $params = params(); 
-    # use qq to put sql in double quote 
-    my $sth = database->prepare(qq{ INSERT INTO clients (company_name,address_1,address_2,city,state,phone,website,zip_code,contact_fname, contact_lname) VALUES ( ?,?,?,?,?,?,?,?,?,?)} );
-    $sth->execute($company_name, $address_1, $address_2, $city, $state, $phone, $website, $zip_code,$contact_fname,$contact_lname);
-      template "create_success.tt" , { company_name =>  $company_name };
+ajax '/create' => sub {
+  my $params = params(); 
+  # makes more sense to do field validation here
+  my $field_check = Billy::Model::Clients->check_required_fields($params);
+  
+  if ( $field_check->{status_code} == 1 ) {
+
+    my $client = Billy::Model::Clients->new($params);
+    return "$client->{company_name} is now a new client";
+
+  } else {
+     return to_xml( $field_check->{status_text});
+  };
+
 };
 
 any ['get', 'post'] => '/edit' => sub {
-    my $query = "select * from clients where id = ?";
-    my $sth = database->prepare($query);
-    $sth->execute(params->{client_id});
-    
-    template 'client_edit.tt', { client_info =>$sth->fetchrow_hashref(),};
+    my $client = Billy::Model::Clients->new({ id => params->{client_id} } );
+        
+    template 'client_edit.tt', { client_info => $client};
     
 };
 
