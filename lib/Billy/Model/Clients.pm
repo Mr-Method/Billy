@@ -104,13 +104,13 @@ sub save_client {
       my $phone           =  $params->{phone};
       my $zip_code        =  $params->{zip_code};
       my $website         =  $params->{website};
-      my $client_id       =  $params->{id};
+      my $client_id       =  $params->{client_id};
     
     # update client information
     my $sth = database->prepare( qq{
-        UPDATE clients set company_name= ?, address_1 = ?, address_2 = ?, city = ?, state = ?, phone = ?, website = ?, zip_code = ?, contact_fname = ?, contact_lname = ? where id = ? });
-      
-      $sth->execute($company_name, $address_1, $address_2, $city, $state, $phone, $website, $zip_code,$contact_fname,$contact_lname,$client_id);
+        UPDATE clients SET company_name= ?, address_1 = ?, address_2 = ?, city = ?, state = ?, phone = ?, website = ?, zip_code = ?, contact_fname = ?, contact_lname = ? where id = ? });
+    # TODO:write code to capture error in sql execute and return 0  
+      $sth->execute( $company_name, $address_1, $address_2, $city, $state, $phone, $website, $zip_code, $contact_fname, $contact_lname, $client_id );
     return 1; 
   } else {
     return 0;    
