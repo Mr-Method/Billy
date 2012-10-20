@@ -25,10 +25,14 @@ any ['get', 'post'] => '/add' => sub{
 
 any ['get', 'post'] => '/save' => sub {
 	my $params = params();
-
-    # update client row.
-    
-    # return confirmation message.	
+    my $client_save = Billy::Model::Clients->save_client($params);
+    if ( $client_save == 1) {
+      error "client saved:" . to_dumper($params);
+      return "Client $params->{company_name} was saved.";
+    } else {
+      error "There is a problem saving client:" . to_dumper($params);
+      return "Sorry, There was a problem saving $params->{company_name}.";
+    }
 	
 };
 
