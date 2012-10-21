@@ -22,4 +22,15 @@ sub invoice_number {
      my $self = shift; 
      return $self->{invoice_id};
 };
+
+sub invoice_list {
+   my $self = shift;
+
+   my $query = "select * from invoices inner join clients on invoices.client_id = clients.id";
+    
+   my $sth = database->prepare($query);
+   $sth->execute;
+   return $sth->fetchall_hashref('invoice_number');
+};
+
 1;

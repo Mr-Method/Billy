@@ -51,11 +51,8 @@ any ['get', 'post'] => '/new' => sub {
 };
 
 any ['get', 'post'] => '/list' => sub {
-   my $query = "select * from invoices inner join clients on invoices.client_id = clients.id";
-   my $sth = database->prepare($query);
-   $sth->execute;
-   
-   template 'invoice_list.tt', { invoice_list => $sth->fetchall_hashref('invoice_number')}
+   my $invoice_list = Billy::Model::Invoice->invoice_list(); 
+   template 'invoice_list.tt', { invoice_list => $invoice_list}; 
 };
 
 ajax '/create' => sub {
