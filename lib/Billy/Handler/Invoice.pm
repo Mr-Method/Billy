@@ -55,33 +55,15 @@ any ['get', 'post'] => '/list' => sub {
    template 'invoice_list.tt', { invoice_list => $invoice_list}; 
 };
 
-ajax '/create' => sub {
-	
-	my $invoice_id = params->{'invoice_id'};
-	
-	# here I need to write sql to create an invoice and add items to that invoice.
-	my %args = params();
-	my %item_group;
-	
-	foreach my $param_name ( keys(%args)) {
-		    # Regex to filter out params that are not item specific.
-			unless( $param_name =~ m/^item_(\d*)_(description|quantity|price)$/ ){
-				next;
-			}
-			my $item_order = $1;
-			$item_group{$item_order}{$param_name} = $args{$param_name};
-	};
-	my $items_sql = "INSERT INTO invoice_items (invoice_number, description, order_num, quantity, price) values (?,?,?,?,?)";
-	
-	foreach my $order ( keys(%item_group) ){
-		 my $sth_inv = database->prepare($items_sql);
-		 my $description = $item_group{$order}->{"item_".$order."_description"};
-		 my $quantity = $item_group{$order}->{"item_".$order."_quantity"};
-		 my $price = $item_group{$order}->{"item_".$order."_price"};
-		 
-		 $sth_inv->execute($invoice_id,$description,$order,$quantity,$price);
-	};
-   return "Invoice#  $invoice_id  has been saved";
+any ['get','post'] => '/create' => sub {
+    my $params = params();
+    my $invoice_id = params->{'invoice_id'};
+    my $invoice_update = Billy::Model::Invoice->update($params);
+    if  ($invoice_update == 1) {
+        return "Invoice#  $invoice_id  has been saved";
+    } else {
+        error  "Failed to update invoice# $invoice_id";
+    }
 };
 
 any ['get'] => '/edit' => sub {

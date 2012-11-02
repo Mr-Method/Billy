@@ -38,7 +38,7 @@ any ['get', 'post'] => '/save' => sub {
 };
 
 
-ajax '/create' => sub {
+any ['get', 'post'] => '/create' => sub {
   my $params = params(); 
   # makes more sense to do field validation here
   my $field_check = Billy::Model::Clients->check_required_fields($params);
