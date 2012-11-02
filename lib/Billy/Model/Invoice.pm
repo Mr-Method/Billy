@@ -25,8 +25,16 @@ sub invoice_number {
 
 sub invoice_list {
    my $class = shift;
-
-   my $query = "select * from invoices inner join clients on invoices.client_id = clients.id";
+   my $query = qq{
+     select 
+           invoices.*,
+           clients.*, 
+           sum( invoice_items.quantity * invoice_items.price )as total
+     from invoices 
+     inner join invoice_items on invoices.invoice_number = invoice_items.invoice_number 
+     inner join clients on invoices.client_id = clients.id 
+     group by invoices.invoice_number
+   };
     
    my $sth = database->prepare($query);
    $sth->execute;

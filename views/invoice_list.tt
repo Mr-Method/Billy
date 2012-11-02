@@ -34,7 +34,7 @@
 	    <td> [% invoice_list.$key.company_name %] </td>
 	    <td> [% invoice_list.$key.contact_fname %]  [% invoice_list.$key.contact_lname %] </td>
     	    <td>  </td>
-	    <td>  </td>
+	    <td> [% invoice_list.$key.total %] </td>
 	</tr>
 [% END %]
 

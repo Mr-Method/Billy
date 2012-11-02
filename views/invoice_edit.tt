@@ -94,7 +94,7 @@
     <button type="button" class="save_invoice">Save Invoice</button>
     </div>
     <div class=" offset2 span2">
-    <label>Total Amount:</label><input id="invoice_total" readonly="readonly" />
+    <label>Total Amount:</label><input id="invoice_total" readonly="readonly"  value="[% invoice.total %]" />
     </div>
  
     </div> <!-- End of Row -->
