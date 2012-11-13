@@ -69,8 +69,8 @@
 		<td><button type="button" id="confirm_item">confirm</button></td>
 		<td><input type="text" size="10" id="item_quantity" name="item_[% invoice_items.$key.order_num %]_quantity" value="[% invoice_items.$key.quantity %]"/></td>
 		<td><textarea cols="75" rows="2" id="item_description" name="item_[% invoice_items.$key.order_num %]_description"> [% invoice_items.$key.description %]</textarea></td>
-		<td><input type="text" size="10" id="item_price" name="item_[% invoice_items.$key.order_num %]_price" value="[% invoice_items.$key.price %]"/></td>
-		<td><input id="item_total" readonly="readonly" value="[% invoice_items.$key.quantity * invoice_items.$key.price %]" /></td>
+		<td><input type="text" size="10" id="item_price" name="item_[% invoice_items.$key.order_num %]_price" value="[% invoice_items.$key.price | format('%.02f') %]"/></td>
+		<td><input id="item_total" readonly="readonly" value="[% invoice_items.$key.quantity * invoice_items.$key.price  | format('%.02f') %]" /></td>
 	</tr>
 	[% END %]
 
@@ -94,7 +94,7 @@
     <button type="button" class="save_invoice">Save Invoice</button>
     </div>
     <div class=" offset2 span2">
-    <label>Total Amount:</label><input id="invoice_total" readonly="readonly"  value="[% invoice.total %]" />
+    <label>Total Amount:</label><input id="invoice_total" readonly="readonly"  value="[% invoice_total | format('%.02f')%]" />
     </div>
  
     </div> <!-- End of Row -->

@@ -88,4 +88,15 @@ sub fetch_items {
      return $sth_invoice_items->fetchall_hashref('order_num');
 };
 
+sub total {
+  my $invoice_number = shift;
+  my $total_query = "select sum( invoice_items.quantity * invoice_items.price )as total from invoice_items where invoice_number = ?";
+  my $sth_inv = database->prepare($total_query);
+  $sth_inv->execute($invoice_number);
+
+  my @row = $sth_inv->fetchrow_array; 
+  my $total = $row[0];
+  return $total;
+};
+
 1;

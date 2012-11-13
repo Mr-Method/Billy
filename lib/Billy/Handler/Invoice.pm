@@ -73,18 +73,18 @@ any ['get'] => '/edit' => sub {
     my $sth_inv = database->prepare($invoice_query);
     $sth_inv->execute($invoice_id);
     my $invoice_items = $sth_inv->fetchall_hashref('order_num');
-    
+    my $invoice_total = Billy::Model::Invoice::total($invoice_id); 
 
     my $comp_info = Billy::Model::Settings->invoice_company_info($invoice_id);
     my $ship_info = Billy::Model::Settings->invoice_ship_info($invoice_id);
     my $client_info = Billy::Model::Clients->invoice_client($invoice_id);
-    
     template 'invoice_edit.tt' , { 
         invoice_items => $invoice_items,
         ship_info => $ship_info, 
         company_info => $comp_info,
         client_info => $client_info,
-        invoice_id => $invoice_id 
+        invoice_id => $invoice_id,
+        invoice_total => $invoice_total 
     };
 };
 
