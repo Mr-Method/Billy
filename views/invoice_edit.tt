@@ -56,7 +56,6 @@
 	<input type="hidden" name="client_id" value="[% client_info.id %]" />
     <table>
     <tr style="background-color:gray;">
-	<th></th>
         <th> Hours/Quantity </th>
         <th> Deliverables</th>
         <th> Unit Price </th>
@@ -66,11 +65,10 @@
 [% IF invoice_items.keys.size > 0 %]
 	[% FOREACH key in invoice_items.keys.sort %]
 	<tr class="item">
-		<td><button type="button" id="confirm_item">confirm</button></td>
 		<td><input type="text" size="10" id="item_quantity" name="item_[% invoice_items.$key.order_num %]_quantity" value="[% invoice_items.$key.quantity %]"/></td>
 		<td><textarea cols="75" rows="2" id="item_description" name="item_[% invoice_items.$key.order_num %]_description"> [% invoice_items.$key.description %]</textarea></td>
 		<td><input type="text" size="10" id="item_price" name="item_[% invoice_items.$key.order_num %]_price" value="[% invoice_items.$key.price | format('%.02f') %]"/></td>
-		<td><input id="item_total" readonly="readonly" value="[% invoice_items.$key.quantity * invoice_items.$key.price  | format('%.02f') %]" /></td>
+		<td><input id="item_total" readonly="readonly" value="[% ( invoice_items.$key.quantity|| 0 )  * (invoice_items.$key.price || 0 )  | format('%.02f') %]" /></td>
 	</tr>
 	[% END %]
 
