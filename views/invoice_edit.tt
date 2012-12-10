@@ -1,117 +1,13 @@
 [% PROCESS header.tt %]
 
-<script type="text/javascript" src="/js/invoice.js">
-</script>
 
 
 <div id="invoice">
-<div id="top-invoice">
 
-<div class="row">
-    <div class="span3" id="invoice_num">
-        <p> Invoice Number: [% invoice_id %] </p>
-    </div>
-</div> <!-- End of Row -->
-
-
-<div class="row">
-	<div class="span4 offset4" id="company-info">
-        <p> Company Address:  [% company_info.address %]</p>
-        <p> Phone: [% company_info.phone %] </p>
-        <p> Fax: [% company_info.fax %]</p> 
-	</div>
-</div> <!-- End of Row -->
-
-<div class="row">
-	<div class="span4" id="bill-to">
-		<p> Bill to: [% client_info.company_name %] <p>
-		<p> Name :  [% client_info.contact_fname %]  [% client_info.contact_lname %]<p>
-		<p> Company : [% client_info.company_name %] <p>
-		<p> Address_1 : [% client_info.address_1 %] <p>
-		<p> Address_2 : [% client_info.address_2 %] <p>
-		<p> State, City, Zipcode : [% client_info.state %], [% client_info.city %], [% client_info.zip_code %] <p>
-		<p> Country : [%client_info.country %]<p>
-	</div>
-
-	<div class="span4 offset2" id="ship-to">
-		<p> Ship to : [% ship_info.company_name %] <p>
-		<p> Name : [% ship_info.contact_name %] <p>
-		<p> Company : [% ship_info.company_name %] <p>
-		<p> Address_1 :  [% ship_info.address %] <p>
-		<p> Address_2 :  [% ship_info.address2 %]<p>
-		<p> State, City, Zipcode : [% ship_info.state %] , [% ship_info.city %] , [% ship_info.zipcode %] <p>
-		<p> Country : [% ship_info.country %] <p>
-	</div>
-</div> <!-- End of Row -->
-<div style="display:block; height:15px;">
-</div>
-       
-</div> <!-- End of top-invoice -->
-
-<div class="row">
-<div class="span12" id="middle-invoice">
-
-    <div id="invoice-description">
-    <input type="hidden" name="action" value="create"/>
-	<input type="hidden" name="client_id" value="[% client_info.id %]" />
-    <table>
-    <tr style="background-color:gray;">
-        <th> Hours/Quantity </th>
-        <th> Deliverables</th>
-        <th> Unit Price </th>
-        <th> Total Amount </th>
-    </tr>
-
-[% IF invoice_items.keys.size > 0 %]
-	[% FOREACH key in invoice_items.keys.sort %]
-	<tr class="item">
-		<td><input type="text" size="10" id="item_quantity" name="item_[% invoice_items.$key.order_num %]_quantity" value="[% invoice_items.$key.quantity %]"/></td>
-		<td><textarea cols="75" rows="2" id="item_description" name="item_[% invoice_items.$key.order_num %]_description"> [% invoice_items.$key.description %]</textarea></td>
-		<td><input type="text" size="10" id="item_price" name="item_[% invoice_items.$key.order_num %]_price" value="[% invoice_items.$key.price | format('%.02f') %]"/></td>
-		<td><input id="item_total" readonly="readonly" value="[% ( invoice_items.$key.quantity|| 0 )  * (invoice_items.$key.price || 0 )  | format('%.02f') %]" /></td>
-	</tr>
-	[% END %]
-
-[% ELSE %]
-	<tr class="item">
-		<td><button type="button" id="confirm_item">confirm</button></td>
-		<td><input type="text" size="10" id="item_quantity" name="item_1_quantity" /></td>
-		<td><textarea cols="75" rows="2" id="item_description" name="item_1_description"> </textarea></td>
-		<td><input type="text" size="10" id="item_price" name="item_1_price" /></td>
-		<td><input id="item_total" readonly="readonly" /></td>
-	</tr>
-[% END %]
-    </table>
-    
-    <div class="row">
- 
-    <div class="span2" >
-    <button type="button" class="add_item">Add Deliverable</button>
-    </div>
-    <div class="offset2 span2">
-    <button type="button" class="save_invoice">Save Invoice</button>
-    </div>
-    <div class=" offset2 span2">
-    <label>Total Amount:</label><input id="invoice_total" readonly="readonly"  value="[% invoice_total | format('%.02f')%]" />
-    </div>
- 
-    </div> <!-- End of Row -->
-    <!-- hidden inputs -->
-	<input type="hidden" value="[% ship_info.company_ship_id %]" name="company_ship_id" />
-	<input type="hidden" value="[% company_info.company_info_id %]" name="company_info_id" />
-	<input type="hidden" value="[% invoice_id  %]" name="invoice_id" />
-    </div>
-	
-</div>
-</div> <!-- End of Row -->
-
-<div id="bottom-invoice">
-<p>
-Invoice Disclaimer text goes here.
-</p>
-</div>
+[% PROCESS invoice/invoice_top.tt %]
+[% PROCESS invoice/invoice_middle.tt %]
+[% PROCESS invoice/invoice_bottom.tt %]
 
 </div> <!-- end of invoice div -->
-
 
 [% PROCESS footer.tt %]

@@ -31,7 +31,7 @@ sub invoice_list {
            clients.*, 
            sum( invoice_items.quantity * invoice_items.price )as total
      from invoices 
-     inner join invoice_items on invoices.invoice_number = invoice_items.invoice_number 
+     left join invoice_items on invoices.invoice_number = invoice_items.invoice_number 
      inner join clients on invoices.client_id = clients.id 
      group by invoices.invoice_number
    };

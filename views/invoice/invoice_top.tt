@@ -1,0 +1,42 @@
+<div id="top-invoice">
+
+<div class="row">
+    <div class="span3" id="invoice_num">
+        <p> Invoice Number: [% invoice_id %] </p>
+    </div>
+</div> <!-- End of Row -->
+
+
+<div class="row">
+	<div class="span4 offset4" id="company-info">
+        <p> Company Address:  [% company_info.address %]</p>
+        <p> Phone: [% company_info.phone %] </p>
+        <p> Fax: [% company_info.fax %]</p> 
+	</div>
+</div> <!-- End of Row -->
+
+<div class="row">
+	<div class="span4" id="bill-to">
+		<p> Bill to: [% client_info.company_name %] <p>
+		<p> Name :  [% client_info.contact_fname %]  [% client_info.contact_lname %]<p>
+		<p> Company : [% client_info.company_name %] <p>
+		<p> Address_1 : [% client_info.address_1 %] <p>
+		<p> Address_2 : [% client_info.address_2 %] <p>
+		<p> State, City, Zipcode : [% client_info.state %], [% client_info.city %], [% client_info.zip_code %] <p>
+		<p> Country : [%client_info.country %]<p>
+	</div>
+
+	<div class="span4 offset2" id="ship-to">
+		<p> Ship to : [% ship_info.company_name %] <p>
+		<p> Name : [% ship_info.contact_name %] <p>
+		<p> Company : [% ship_info.company_name %] <p>
+		<p> Address_1 :  [% ship_info.address %] <p>
+		<p> Address_2 :  [% ship_info.address2 %]<p>
+		<p> State, City, Zipcode : [% ship_info.state %] , [% ship_info.city %] , [% ship_info.zipcode %] <p>
+		<p> Country : [% ship_info.country %] <p>
+	</div>
+</div> <!-- End of Row -->
+<div style="display:block; height:15px;">
+</div>
+       
+</div> <!-- End of top-invoice -->

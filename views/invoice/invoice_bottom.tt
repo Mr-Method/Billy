@@ -1,0 +1,8 @@
+
+<div id="bottom-invoice">
+<p>
+Invoice Disclaimer text goes here.
+</p>
+</div>
+
+<script type="text/javascript" src="/js/invoice.js"></script>
