@@ -5,6 +5,11 @@
 # Your application's name
 appname: "Billy"
 
+#  Session Engine
+#  simple session engine
+
+session: Simple
+
 # The default layout to use for your application (located in
 # views/layouts/main.tt)
 #layout: "main"
@@ -31,7 +36,9 @@ engines:
 plugins:
     Database:
         driver: "SQLite"
-        database: "/home/cgonzalez/project/Billy/sql/billy_invoice_test.sqlite"
+#       database: "/home/cgonzalez/project/Billy/sql/billy_invoice_test.sqlite"
+#       Windows Path to sqlite file:
+        database: "C:\Users\cgonzalez\Documents\GitHub\Billy\sql\billy_invoice_test.sqlite"
 
 
 	

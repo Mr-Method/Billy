@@ -52,3 +52,10 @@ CREATE TABLE "company_ship" (
     "active" INTEGER,
     "modify_date" TEXT NOT NULL
 );
+
+CREATE TABLE "users" (
+    "user_id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    "username" TEXT NOT NULL,
+    "password" TEXT NOT NULL,
+    "email"    TEXT NOT NULL
+);

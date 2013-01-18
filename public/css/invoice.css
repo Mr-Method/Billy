@@ -1,4 +1,18 @@
+/*  Login page */
 
+.login {
+    margin: 0 auto;
+    border: solid 1px black;
+    width: 275px;
+    height: 125px;
+    padding: 10px;
+    margin-top: 15%;
+}
+
+.submit{
+    margin-left:30%;
+    margin-right:30%;
+}
 /*  This area is for Invoice Page */
 
 /*

@@ -1,9 +1,31 @@
-[% PROCESS header.tt %]
+<html>
 
-<form>
-    <label>Username</label><input type="text" name="user" />
-    <label>Password</label><input type="password" name="password"/>
-    
+<link rel="stylesheet" type="text/css" href="/css/invoice.css" />
+<body>
+
+<div class="login" >
+<form method="post" action="/login">
+
+<table>
+[% IF auth_fail %]
+<tr>
+  <td colspan="2"> Authentication Failed <td>
+</tr>
+[% END %]
+<tr>
+  <td><label>Username:</label></td>
+  <td><input type="text" name="user" value="[% user || '' %]"/></td>
+</tr>
+<tr>
+   <td> <label>Password:</label> </td>
+   <td> <input type="password" name="password"/> </td>
+</tr>
+</table>
+
+<input class="submit" type="submit" value="submit">
 </form>
+</div>
 
-[% PROCESS footer.tt %]
+</body>
+
+</html>
