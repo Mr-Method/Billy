@@ -2,7 +2,7 @@ package Billy::Handler::Login;
 use Dancer ':syntax';
 use Dancer::Plugin::Database;
 use Dancer::Plugin::Ajax;
-
+use Crypt::SaltedHash;
 
 use Data::Dumper;
 
@@ -10,30 +10,34 @@ our $VERSION = '0.1';
 
 prefix '/login';
 
+get '/' =>sub {
+    template 'index.tt';
+};
 
-any '/' => sub {
+post '/' => sub {
     debug "Login route done";
-    if ( params->{user} && params->{password} ){
+    if ( params->{username} && params->{password} ){
          
         my $user = database->quick_select('users',
-            { username => params->{user} }
+            { username => params->{username} }
         );
         if (!$user) {
-            debug "Authentication failure for user " . params->{user};
-            template 'index.tt', { auth_fail => 1, user => params->{user} };
+            debug "Authentication failure user doesn't exist: " . params->{username};
+            template 'index.tt', { auth_fail => 1, user => params->{username} };
         } else {
-            if (Crypt::SaltedHash->validate($user->{password}, params->{pass}))
+	    debug "User "  . Dumper $user->{password};
+            if (Crypt::SaltedHash->validate($user->{password}, params->{password}))
             {
                 session user => $user;
-                redirect '/main_landing.tt';
+                redirect '/clients';
             } else {
-                debug "Auth_failed";
-                template 'index.tt', { auth_fail => 1, user => params->{user} };
+                debug "Authentication failure for user " . params->{username};
+                template 'index.tt', { auth_fail => 1, user => params->{username} };
             }
         }
     
-    } elsif ( params->{user} || params->{password} ) {   
-        template 'index.tt', { auth_fail => 1, user => params->{user} };   
+    } elsif ( params->{username} || params->{password} ) {   
+        template 'index.tt', { auth_fail => 1, user => params->{username} };   
     } else {
         template 'index.tt';
     }

@@ -21,7 +21,7 @@
 
     
     <label for="inputEmail">Username</label>
-    <input type="text" id="inputEmail" name="user" value="[% user || ''%]" placeholder="Username">
+    <input type="text" id="inputEmail" name="username" value="[% username || ''%]" placeholder="Username">
     <div class="clear"></div>
     <label for="inputPassword">Password</label>
     <input type="password" id="inputPassword"  name="password" placeholder="Password">
