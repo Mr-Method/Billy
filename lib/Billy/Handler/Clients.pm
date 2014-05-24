@@ -9,7 +9,7 @@ our $VERSION = '0.1';
 prefix '/clients';
 
 
-any ['get', 'post'] => '/list' => sub{
+get '/list' => sub{
     my $clients_sql = qq{ SELECT * from clients};
     my $sth = database->prepare( $clients_sql );
     $sth->execute();
@@ -19,11 +19,11 @@ any ['get', 'post'] => '/list' => sub{
 };
 
 
-any ['get', 'post'] => '/add' => sub{
+get '/add' => sub{
     template 'clients_add.tt';
 };
 
-any ['get', 'post'] => '/save' => sub {
+post '/save' => sub {
 	my $params = params();
     my $client_save = Billy::Model::Clients->save_client($params);
 
@@ -38,7 +38,7 @@ any ['get', 'post'] => '/save' => sub {
 };
 
 
-any ['get', 'post'] => '/create' => sub {
+post '/create' => sub {
   my $params = params(); 
   # makes more sense to do field validation here
   my $field_check = Billy::Model::Clients->check_required_fields($params);
@@ -54,14 +54,14 @@ any ['get', 'post'] => '/create' => sub {
 
 };
 
-any ['get', 'post'] => '/edit' => sub {
+get '/edit' => sub {
     my $client = Billy::Model::Clients->new({ id => params->{client_id} } );
         
     template 'client_edit.tt', { client_info => $client};
     
 };
 
-any ['get', 'post'] => '/update' => sub {
+post '/update' => sub {
     #TODO: Fetch current values and then compare with passed parameters.
     # once you know which values are different construct your sql update statement
     # with the updated params.
@@ -75,7 +75,8 @@ any ['get', 'post'] => '/update' => sub {
     template 'client_update_sucess.tt', { client_info =>};
     
 };
-any ['get', 'post'] => '/delete' => sub {
+
+post '/delete' => sub {
     my $client_id = params->{client_id};
     my $delete_param = params->{delete} || 0;
     if ( $delete_param == 1 ) { 

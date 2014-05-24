@@ -29,7 +29,7 @@ post '/' => sub {
             if (Crypt::SaltedHash->validate($user->{password}, params->{password}))
             {
                 session user => $user;
-                redirect '/clients';
+                redirect '/';
             } else {
                 debug "Authentication failure for user " . params->{username};
                 template 'index.tt', { auth_fail => 1, user => params->{username} };

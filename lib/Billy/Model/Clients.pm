@@ -71,17 +71,19 @@ sub check_required_fields {
 
   
   for my $key ( keys( %$fields ) ) {	
-	# only field that is optional is address2
+    # only field that is optional is address2
     my $value = $fields->{$key};	
     if ( $key eq "address_2" ) {
 	  next;
-    } elsif( $value  eq "") {
+    } 
+    
+    if( $value  eq "") {
       $status->{status_code} = 0;
       $status->{status_text} = "Field: $key  is empty.";
       return $status;
-	} else {
+    } else {
 	  next;	
-	}
+    }
   };
   $status->{status_code} = 1;
   $status->{status_text} = "ok";
