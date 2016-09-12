@@ -1,7 +1,7 @@
 package Billy::Model::Invoice;
 
 use strict;
-use Dancer::Plugin::Database;
+#use Dancer2::Plugin::Database;
 use Data::Dumper;
 
 sub new {

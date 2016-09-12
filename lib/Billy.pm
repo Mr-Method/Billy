@@ -1,6 +1,6 @@
 package Billy;
-use Dancer ':syntax';
-use Dancer::Plugin::Database;
+use Dancer2 ':syntax';
+use Dancer2::Plugin::Database;  ## Note to self write a plugin or install a plugin for DB
 use Billy::Handler::Clients;
 use Billy::Handler::Invoice;
 use Billy::Handler::Config;

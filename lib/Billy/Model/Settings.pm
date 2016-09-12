@@ -1,6 +1,6 @@
 package Billy::Model::Settings;
 
-use Dancer::Plugin::Database;
+use Dancer2::Plugin::Database;
 
 
 sub new {

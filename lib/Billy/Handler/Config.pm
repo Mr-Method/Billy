@@ -1,7 +1,7 @@
 package Billy::Handler::Config;
-use Dancer ':syntax';
-use Dancer::Plugin::Database;
-use Dancer::Plugin::Ajax;
+use Dancer2 ':syntax';
+use Dancer2::Plugin::Database;
+use Dancer2::Plugin::Ajax;
 use Billy::Model::Settings;
 
 use Data::Dumper;

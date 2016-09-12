@@ -1,7 +1,7 @@
 package Billy::Handler::Invoice;
-use Dancer ':syntax';
-use Dancer::Plugin::Database;
-use Dancer::Plugin::Ajax;
+use Dancer2 ':syntax';
+use Dancer2::Plugin::Database;
+use Dancer2::Plugin::Ajax;
 use Data::Dumper;
 
 use Billy::Model::Invoice;

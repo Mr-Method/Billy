@@ -26,11 +26,11 @@ charset: "UTF-8"
 #template: "simple"
 
 template: "template_toolkit"
-engines:
-    template_toolkit:
-        encoding:  'utf8'
-        start_tag: '[%'
-        end_tag:   '%]'
+#engines:
+#    template_toolkit:
+#        encoding:  'utf8'
+#        start_tag: '[%'
+#        end_tag:   '%]'
 
 # DB connection settings
 plugins:
@@ -38,7 +38,4 @@ plugins:
         driver: "SQLite"
 #       database: "/home/cgonzalez/project/Billy/sql/billy_invoice_test.sqlite"
 #       Windows Path to sqlite file:
-        database: "C:\Users\cgonzalez\Documents\GitHub\Billy\sql\billy_invoice_test.sqlite"
-
-
-	
+        database: 'C:\Users\cgonzalez\Documents\GitHub\Billy\sql\billy_invoice_test.sqlite'

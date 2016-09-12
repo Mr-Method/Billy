@@ -1,7 +1,7 @@
 package Billy::Handler::Clients;
-use Dancer ':syntax';
-use Dancer::Plugin::Database;
-use Dancer::Plugin::Ajax;
+use Dancer2 appname => 'Billy';
+use Dancer2::Plugin::Database;
+use Dancer2::Plugin::Ajax;
 use Data::Dumper;
 
 our $VERSION = '0.1';

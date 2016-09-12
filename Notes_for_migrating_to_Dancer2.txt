@@ -1,0 +1,10 @@
+A few tasks to do before I continue to develop this application using Dancer2
+
+1- Install a plugin for Ajax  # Dancer2::Plugin::Ajax
+2- Install a plugin for Database Handler like DBI # Dancer2::Plugin::Database ?
+3- update configuration file to include new Dancer2 syntax.
+4- rewrite all route definitions to include prependded slash character.
+5- read up on params keyword # it doesn't behave as it used to in Dancer1
+6- Write up somes tests using :Plack::Test # recommended module for testing Dancer2 app.
+7- Dancer2::Core::Role::Logger needs to be researched in order to enhancing logging.
+8- Find an app that will load perldocs in a scrollable format - Windows terminal sucks
