@@ -1,7 +1,7 @@
 package Billy::Model::Clients;
 
 use strict;
-#use Dancer2::Plugin::Database;
+use Dancer2::Plugin::Database;
 use Data::Dumper;
 
 sub new {
