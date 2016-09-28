@@ -4,7 +4,7 @@ use ExtUtils::MakeMaker;
 
 WriteMakefile(
     NAME                => 'Billy',
-    AUTHOR              => q{YOUR NAME <youremail@example.com>},
+    AUTHOR              => q{Charlie Gonzalez <itcharlie@gmail.com>},
     VERSION_FROM        => 'lib/Billy.pm',
     ABSTRACT            => 'YOUR APPLICATION ABSTRACT',
     ($ExtUtils::MakeMaker::VERSION >= 6.3002
@@ -14,7 +14,8 @@ WriteMakefile(
     PREREQ_PM => {
         'Test::More' => 0,
         'YAML'       => 0,
-        'Dancer'     => 1.3091,
+        'Dancer2'     => 0.203000,
+        'Dancer2::Plugin::Database' => '0',
     },
     dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean               => { FILES => 'Billy-*' },

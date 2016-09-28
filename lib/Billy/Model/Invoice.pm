@@ -1,6 +1,7 @@
 package Billy::Model::Invoice;
 
 use strict;
+use Dancer2;
 use Dancer2::Plugin::Database;
 use Data::Dumper;
 
@@ -11,7 +12,7 @@ sub new {
     my $invoice_dbh= database();
     my $invoice_sth= $invoice_dbh->prepare($invoice_sql);
     $invoice_sth->execute($self->{client_id},$self->{company_info_id}, $self->{company_ship_id});
-    $self->{invoice_id} =  $invoice_dbh->last_insert_id("","","invoices","id");
+    $self->{invoice_id} =  $invoice_dbh->last_insert_id("","","invoices","id"); 
     
     bless($self, $class );
     return $self;

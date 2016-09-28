@@ -20,7 +20,7 @@ prefix '/config' => sub {
         
     };
     
-    any ['get','post'] => '/add_info' => sub {
+     post '/add_info' => sub {
             # take params and store data in company_ship table
             my $modify_date = localtime();
             my $active = params->{active};

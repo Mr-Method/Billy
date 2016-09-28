@@ -1,5 +1,6 @@
 package Billy::Model::Settings;
 
+use Dancer2;
 use Dancer2::Plugin::Database;
 
 
